@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset = "UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Project Web Application Development 2020: Home Page</title>
+	<!-- Load d3.js & color scale -->
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+	<style>
+		/*  Full page is sized as a box where padding and border are included in the width and height */
+		* {
+			box-sizing: border-box;
+		}
+		
+		/* Set height to 100% as a part of moving the footer to the bottom */
+		html {
+			height: 100%;
+		}
+		
+		/* Define preferred and "fallback" fonts. Set margin, and height to 100% as a part of moving the footer to the bottom  */
+		body {
+			font-family: Times, Helvetica, sans-serif;
+			margin: 0;
+			height: 100%;
+		}
+		
+		/* Set the padding of the header and background. Center text and set its colour  */
+		header {
+			padding: 30px;
+			text-align: center;
+			background: #1abc9c;
+			color: white;
+		}
+		
+		/* Navigation bar styling. Set overflow and  navigation background */
+		.nav {
+			overflow: hidden;
+			background-color: #00004d;
+		}
+		
+		/* Move the navigation links to the left of the bar, center the text, set its colour, padding and animation. Text-decoration is set to none so the links are not underlined. */
+		.nav a {
+			float: left;
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 20px;
+			text-decoration: none;
+			transition: transform .2s;
+		}
+		/* Move the Subscribe/Login link to the right of the navigation bar */
+		.nav a.right {
+			float: right;
+		}
+		
+		/* Zooom in on links when hovering over */
+		.nav a:hover {
+			 transform: scale(1.3);
+		}
+		
+		/* Make box flexible, wrap items on resizing the window. Set minimum height to 100% as a part of moving the footer to the bottom  */
+		.box {
+			display: flex;
+			flex-wrap: wrap;
+			padding-bottom: 100px;
+			min-height: 100%;
+		}
+				
+		/* Let the left side of the screen to take 30% of the full width, set background colour and padding, center the content. */
+		.boxleft {
+			flex: 30%;
+			background-color: #f1f1f1;
+			padding: 50px;
+			text-align: center;	
+		}
+		
+		/* Style a border for the image in the left side of the screen and change image width */
+		.boxleft img {
+			border: 9px solid;
+			border-color: white;
+			border-style: double;
+			width: 300px;
+		}
+
+		/* Let the right side of the screen to take 70% of the full width, set padding and background colour, center the text */
+		.boxright {
+			flex: 70%;
+			background-color: white;
+			text-align: center;
+			height: 100%;
+		}
+		
+		/* Move image on the right side down and to the left, change its height, and give it a border */
+		.boxright img {
+			margin-top: 50px;
+			margin-left: 100px;
+			height: 615px;
+			border: 15px solid;
+			border-color: lightgrey;
+			border-style: double;
+			}
+			
+	
+		/* Set background and text colour for all buttons */		
+		button {
+			background-color: #00004d;
+			color: white;
+			border: none;
+			padding: 5px;
+			margin-right: 5px;
+			margin-left: 5px;
+		}
+		
+		/* Zoom in on buttons and change text colour */
+		button:hover {
+			transform: scale(1.1);
+			color: #1abc9c;
+		}		
+		
+		/* Move visualization switching buttons to the right of the screen and down from the top */
+		.startButtons {
+			margin-top: 30px;
+			padding: 10px;
+			width: 200px;
+		}
+		
+		/* Align button for changing bar labels with the button above */
+		#changeBarLabels {
+			margin-left: 35px;
+		}
+		
+		/* Style instruction text under animation and move it to the right */ 
+		#p2 {
+			color: #5F9EA0;
+			font-size: 12px;
+		}
+		
+		/* Change opacity of bar chart on hovering */
+		path:hover {
+			opacity: 0.5;
+			transform: scale(1.05);
+		}
+		
+		/* Change opacity of bar chart on hovering */
+		rect:hover {
+			opacity: 0.5;
+		}
+				
+		/* Set background colour and padding. Set height and top margin so to keep the footer at the bottom of the screen, but with a thin line for visual separation */
+		footer {
+			padding: 8px;
+			background: #ddd;
+			height: 100px;
+			margin-top: -98px;			
+		}
+		
+		/* Center text, define its font size, display the links as a centrally floating block and move it from the top of the footer */ 
+		#footbox {
+			display: block;
+			foat: center;
+			text-align: center;
+			font-size: 13px;
+			margin-top: 13px;
+		}		
+		
+		/* Set text-decoration to none so the links are not underlined, define its colour and font */
+		footer a {
+			text-decoration: none;
+			color: #00004d;
+			font-weight: bold;
+		}
+
+		/* Change colour of links when hovering over */		
+		footer a:hover {
+			color: #1abc9c;
+		}	
+	</style>
+</head>
+
+<body>
+	<!-- Header with the artist's name --> 
+	<header>
+		<h3>OLGA ROZHDESTVINA</h3>
+	</header
+	
+	<!-- Navigation menu -->
+		<nav class="nav">
+			<!-- Links for each page --> 
+			<a href="index.html">Home</a>
+			<a href="paper.html">Paper</a>
+			<a href="canvas.html">Canvas</a>
+			<a href="panel.html">Panel</a>
+			<a href="subscribe.html" class="right">Subscribe/Login</a>
+		</nav>
+		
+	<!-- Main part -->		
+	<div class="box">
+		<!-- Left side of the screen -->
+		<div class="boxleft">
+			<!-- Image in left side -->
+			<img src="Paintings\Canvas\Merging.jpg" alt="Merging" title="Merging">
+		</div>
+		<!-- Right side of the screen -->
+		<div class="boxright">
+			<!-- Buttons to swith between charts -->
+			<button class="startButtons" onclick="donutChart(); deleteImage();">DOUGHNUT chart</button>
+			<button class="startButtons" onclick="barChart(); deleteImage();">BAR chart</button><br>
+			<label for="startButtons" id="p2">choose a chart to view</label><br>
+			
+			<!-- Image in right side -->
+					<img id="img2" src="Paintings\Paper\Dual Faith Buddhism and Shamanism in Mongolia.jpg" alt="Dual Faith Buddhism and Shamanism in Mongolia.jpg" />
+					<!-- VISUALISATION -->
+					<!-- Heading for chart -->
+					<h3 id="h"></h3>
+					<!-- Explanation how to use how of the features -->
+					<p id="instructionsColour"></p>
+					<p id="instructionsZoom"></p>
+					<!-- Buttons to trigger transitions -->			
+					<button id="buttonColourShape"></button>
+					<button id="buttonTextColour"></button>
+					<button id="changeDonutLabels"></button><br><br>
+					<button id="changeBarLabels"></button><br><br>
+					<!-- Silder -->
+					<label for="range" id="instructionsWidth"></label>
+					<input type="range" name="mySlider" id="mySlider" min="200" max="500" value="10" /><br><br>
+					<div id="dropdownButton"></div>
+					<!-- Div where visualizations take place -->
+					<div id="paintings"></div>
+		</div>
+	</div>
+	<!-- Footer with links --> 	
+	<footer>
+		<div id="footbox">
+			<!-- Links to artist's work
+			First link is a current webiste, brings back to home page --> <a href="index.html">www.olgarozhdestvina.com</a><br><br> 
+			<a href="http://www.newirishart.ie/irish-artists/olga-rozhdestvina-artist">New Irish Art</a>
+		</div>
+	</footer>
+</body>
+<script>
+// Append the svg object to the div called "paintings"
+// not setting viewbox so there is no extra whitespace when the page is loaded
+var svg = d3.select("#paintings")
+	.append("svg")
+	.attr("preserveAspectRatio", "xMidYMid meet")
+	// Zoom in on the chart
+	.call(d3.zoom().on("zoom", function() {svg.attr("transform", d3.event.transform)
+    }))
+	.append("g");
+
+// Dropdownbutton for Bar chart
+// Create an array with colours for a dropdownButton
+var changeColours = ["Maroon", "CadetBlue", "Olive", "DarkGreen", "IndianRed", "Navy"];
+
+// Initialize the button
+var dropdownButton = d3.select("#dropdownButton")
+  .append("select");
+
+// Add the options to the button
+dropdownButton.selectAll("myOptions")
+	// Add 6 options from the array to the dropdown menu with corresponding values
+ 	.data(changeColours)
+	.enter()
+	.append("option")
+	.text(function (d) {return d;}) 
+	.attr("value", function (d) {return d;});
+	
+// Buttons for chart manipulation
+document.getElementById("instructionsColour").innerHTML = "Click on the chart to change its colour";
+document.getElementById("instructionsZoom").innerHTML = "Use your mouse wheel to zoom and pan (or double click zoom)";
+document.getElementById("changeBarLabels").innerHTML = "Change Bar Labels"; 
+document.getElementById("buttonTextColour").innerHTML = "Change text colour";
+document.getElementById("instructionsColour").innerHTML = "Click on the chart to change its colour";
+document.getElementById("buttonColourShape").innerHTML = "Change to Pie chart";
+document.getElementById("changeDonutLabels").innerHTML = "Change Labels";
+
+// Hide all but switch between buttons
+document.getElementById("instructionsColour").style.visibility = "hidden";
+document.getElementById("instructionsZoom").style.visibility = "hidden";
+document.getElementById("buttonTextColour").style.visibility = "hidden";
+document.getElementById("buttonColourShape").style.visibility = "hidden";
+document.getElementById("changeDonutLabels").style.visibility = "hidden";
+document.getElementById("mySlider").style.visibility = "hidden";
+document.getElementById("changeBarLabels").style.visibility = "hidden";
+document.getElementById("dropdownButton").style.visibility = "hidden";
+document.getElementById("instructionsWidth").style.visibility = "hidden";
+
+
+// Function to delete image before loading chart
+function deleteImage() {
+var element = document.getElementById("img2");
+element.parentNode.removeChild(element);
+};
+
+// Function to view doughnut chart
+function donutChart() {
+// Remove all content of previously displayed chart from svg
+svg.selectAll("*").remove();
+
+// Set heading for current chart and its slider
+document.getElementById("h").innerHTML = "Paintings by Surface used";
+document.getElementById("instructionsWidth").innerHTML = "Change size of the doughnut hole"; 
+
+// Set visibility of buttons and text of active and passive chart 
+document.getElementById("buttonTextColour").style.visibility = "visible";
+document.getElementById("buttonColourShape").style.visibility = "visible";
+document.getElementById("changeDonutLabels").style.visibility = "visible"; 
+document.getElementById("mySlider").style.visibility = "visible";
+document.getElementById("changeBarLabels").style.visibility = "hidden";
+document.getElementById("instructionsWidth").style.visibility = "visible";
+document.getElementById("dropdownButton").style.visibility = "hidden";
+document.getElementById("instructionsColour").style.visibility = "visible";
+document.getElementById("instructionsZoom").style.visibility = "visible";
+
+//---------------------------------
+// 	D3 VISUALISATION USING AN ARRAY
+//Create an array for a plot
+var data = {paper: 47, canvas: 9, panel: 5};
+
+// Create dimensions of the plot
+var width = 800
+    height = 800
+	margin = 20;
+
+// Set the outer and inner radius of the pieplot 
+var radius = Math.min(width, height) / 4 - margin
+	innerRadius = 100;
+	
+// Change viewbox for svg to fit the graph
+d3.selectAll("svg")
+	.attr("viewBox", "0 200 800 600");
+	
+// Set position of the graph	
+svg.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+// Choose a color scale
+var currentColour = d3.scaleOrdinal()
+	.domain(data)
+	.range(d3.schemeSet3); // colour scheme
+
+// Set the position of each group on the pie based on values in the array
+var pie = d3.pie()
+	.value((d) => (d.value));
+//Return an array containing the property names and values of original array
+var data_ready = pie(d3.entries(data));
+
+// Create a shape helper to build arcs:
+var arcGenerator = d3.arc()
+	.innerRadius(innerRadius) // Size of the doughnut hole
+	.outerRadius(radius);	  // Size of the doughnut
+
+// Create an array with colours for colour changing 
+var colours = ["#008B8B", "00FA9A", "#00CED1", "#1E90FF", "#5F9EA0", "#7CFC00", "#808000", "#9370DB"]; 
+
+// Build the pie chart using the arc function
+// adapted from https://www.d3-graph-gallery.com/graph/donut_basic.html
+svg.selectAll("g")
+	.data(data_ready) 
+	.enter()
+	.append("path")
+	.attr("d", arcGenerator) // size of the doughnut
+	.attr("fill", function (d) {return (currentColour(d.data.key))}) 
+	.attr("stroke", "black")
+	.attr("stroke-width", 2)
+	// Change colour on click (adapted from https://website.education.wisc.edu/~swu28/d3t/concept.html )
+	.on("click", function(){d3.select(this).style("fill", function()
+    {return colours[Math.floor(Math.random()*colours.length)];});}); // Randomize a colour within the length of the array "colours"
+
+
+// Add labels. Use the centroid method for the best coordinates
+svg.selectAll("g")
+	.data(data_ready)
+	.enter()
+	.append("text")
+	//Start transtiong for labels
+	//Transition settings
+	.transition()
+	.duration(2000)
+	.delay(400)
+	.ease(d3.easeBounceInOut)
+	// End of label's transititon 
+	.text(function(d){ return d.data.key })
+	.attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";})
+	.attr("text-anchor", "middle")
+	.attr("font-size", 16);
+
+
+// Change text's colour 
+d3.select("#buttonTextColour").on("click", function() {
+	svg.attr("fill", function(d)
+    {return colours[Math.floor(Math.random()*colours.length)];});});
+
+// Change labels
+d3.select("#changeDonutLabels").on("click", function() {
+	svg.selectAll("text")
+		// Start of label transition
+		// Transition settings
+		.transition()
+		.delay((d,i) => i * 400)
+		// End of transition for labels
+		.text(function(d){ return d.data.value ;})
+		.attr("font-size", 17)
+		.attr("font-weight", "bold");
+})
+
+// Change to pie chart with a different colour scheme
+// Colour scale for transition
+var transColour2 = d3.scaleOrdinal()
+	.domain(data)
+	.range(d3.schemePastel1);
+	
+d3.select("#buttonColourShape").on("click", function() {
+	svg.selectAll("path")
+		// Start of pie transition
+		// Transition settings
+		.transition()
+		.delay((d,i) => i * 400)
+		.duration(2000)
+		.ease(d3.easeBackOut.overshoot(3))
+		// End of pie transition 
+		// Get rid of the inner radius
+		.attr("d", d3.arc().innerRadius(0)         
+		.outerRadius(radius))
+		.attr("fill", (d) => (transColour2(d.data.key)))
+		.attr("stroke", "gold");
+});
+
+// Function for changing inner radius size
+function changeSize(size) {
+	svg.selectAll("path")
+		// Start of size transition
+		// Transition settings
+		.transition()
+		.duration(2000)
+		// End of size transition 
+		.attr("d", d3.arc().innerRadius(size/3)         
+		.outerRadius(radius));
+};
+// Listen to the slider
+d3.select("#mySlider").on("change", function(d){
+	changeSize(this.value);
+});
+};
+
+//--------------------------------------
+// 	D3 VISUALISATION USING A CSV FILE
+function barChart() {
+// Remove all content of previously displayed chart from svg
+svg.selectAll("*").remove();
+
+// Set heading for current chart
+document.getElementById("h").innerHTML = "Paintings by Year and Country";
+document.getElementById("instructionsWidth").innerHTML = "Change width of the graph"; 
+
+// Set visibility of buttons and text of active and passive chart 
+document.getElementById("mySlider").style.visibility = "visible";
+document.getElementById("dropdownButton").style.visibility = "visible";
+document.getElementById("changeBarLabels").style.visibility = "visible";
+document.getElementById("instructionsWidth").style.visibility = "visible";
+document.getElementById("buttonTextColour").style.visibility = "visible";
+document.getElementById("buttonColourShape").style.visibility = "hidden";
+document.getElementById("changeDonutLabels").style.visibility = "hidden";
+document.getElementById("instructionsColour").style.visibility = "hidden";
+document.getElementById("instructionsZoom").style.visibility = "visible";
+	
+// Load csv file "paintings_data"
+d3.csv("paintings.csv").then(function(data){
+	console.log(data);
+	
+// Dimensions for bar chart
+var height2 = 300
+	width2 = 500
+	dataCount = data.length
+	gap = 5;
+	
+// Change viewbox for svg to fit the graph
+d3.selectAll("svg")
+	.attr("viewBox", "0 50 800 600");
+	
+// Set position of the graph
+svg.attr("transform", "translate(" + width2 /3 + "," + height2 / 2.8  + ")");
+
+// Convert string data to numbers 
+data.forEach(function(d){
+	d.Count = Number(d.Count);
+});
+
+//Create a scale for X
+var xScale = d3.scaleBand()
+	.domain(data.map(function(d){
+	return d.Year;
+	}))
+	.range([10, width2])
+	
+// Create a scale for Y 
+var yScale = d3.scaleLinear()
+	.domain([0, d3.max(data, function(d){
+		return d.Count;
+	})])
+	.range([height2, 40]);
+	
+// Create X Axis
+var xAxis = d3.axisBottom()
+	.scale(xScale);
+	
+// Create Y Axis
+var yAxis = d3.axisLeft()
+	.scale(yScale);
+
+// Create a rectangle in svg
+var myRectangle = svg.selectAll("rect")
+	.data(data);
+	
+myRectangle.enter()
+	.append("rect")
+		// Start of transition for bars
+		.attr("fill", "black")
+		.attr("x", (d, i) => 30 + (i*(width2/dataCount)))
+		.attr("y", height2)
+		.attr("width", (width2/dataCount - gap))
+		// Transition settings
+		.transition()
+		.duration(1000)
+		.delay((d,i) => i * 100)
+		.ease(d3.easePolyInOut.exponent(0.143))
+		// End of transition
+		.attr("x", (d, i) => 35 + (i*(width2/dataCount)))
+		.attr("y", (d) => yScale(d.Count))
+		.attr("width", width2/dataCount - gap)
+		.attr("height",(d) => height2 - yScale(d.Count))
+		.attr("fill", (d) =>
+			{if(d.Count <= 6) {return "#00CED1";}
+			else if (d.Count <= 8) {return "#1E90FF";}
+			else {return "#5F9EA0";}
+			});
+
+// Create labels for a bar chart
+var myLabels = svg.selectAll("text")
+	.data(data);
+	
+myLabels.enter()
+	.append("text")
+		//Start of label transition
+		.attr("id", "labelText")
+		.attr("x", (d, i) => 55 + (i*(width2/dataCount)))
+		.attr("y", height2)
+		// Transition settings
+		.transition()
+		.duration(5000)
+		.delay(2000)
+		.ease(d3.easeElasticOut)
+		// End of label transition
+		.attr("x", (d, i) => 60 + (i*(width2/dataCount)))
+		.attr("y", (d) => 20 + yScale(d.Count))
+		.attr("text-anchor", "middle")
+		.attr("font-color", "sans-serif")
+		.attr("font-size", 15)			
+		.attr("fill", "white")
+		.text((d) => d.Count);
+
+// Append Y axis to svg and move it to the start of the bar chart
+svg.append("g")
+	.attr("transform", "translate(25,0)")
+	.call(yAxis);
+	
+// Append X axis to svg, move it to the start of the bar chart and match height of the bar chart, asign ID
+svg.append("g")
+	.attr("id", "x-axis")
+	.attr("transform", "translate(25," + height2 + ")")
+	.call(xAxis);
+
+// Create an array with colours for colour changing 
+var colours = ["#FFC0CB", "#F4A460", "#DEB887", "#BDB76B", "#FFD700"]; 
+
+// Change text's colour 
+d3.select("#buttonTextColour").on("click", function() {
+	d3.selectAll("text")
+		.attr("fill", function(d)
+		{return colours[Math.floor(Math.random()*colours.length)];});});
+
+// Change Labels
+d3.select("#changeBarLabels").on("click", function() {
+	d3.selectAll("#labelText")
+		// Start of transition for labels
+		// Transition settings
+		.transition()
+		.duration(3000)
+		.delay((d,i) => i * 400)
+		// End of Label transition
+		.attr("x", (d) => xScale(d.Year) + 55)
+		.attr("y", (d) => yScale(d.Count) - 8)
+		.attr("transform", function(d) {
+			return "rotate(-55," + (xScale(d.Year) + 45) + "," + yScale(d.Count) + ")";
+			})
+		.attr("text-anchor", "start")
+		.attr("font-color", "sans-serif")
+		.attr("font-size", 13)
+		.attr("fill", "navy")
+		.text((d) => d.Country);
+});
+
+// Function that updates the color of the bar chart
+function updateColour(mycolor) {
+  d3.selectAll("rect")
+  	// Start of transition
+	// Transition settings
+    .transition()
+    .duration(2000)
+	// End of transition
+    .style("fill", mycolor)
+};
+// When the colour in the dropdownButton is changed, run the updateColour function
+dropdownButton.on("change", function(d) {
+	updateColour(d3.select(this).property("value"));
+});
+
+// Function for changing width size
+function changeSize(size) {
+d3.selectAll("rect")
+	// Start of transition for bars
+	// Transition settings
+    .transition()
+    .duration(2000)
+	// End of transition for bars
+	.attr("width", size/dataCount - gap)
+	.attr("x", (d, i) => 35 + (i*(size/dataCount)));
+
+// Change xAxis to follow resizing of bars
+xScale.range([10, size])
+// Call Axis and rotate text to avoid cluttering 
+d3.select("#x-axis")
+	// Start of transition for xAxis
+	// Transition settings
+    .transition()
+    .duration(2000)
+	// End of transition for xAxis
+	.call(xAxis)
+	.selectAll("text")
+		.attr("transform", "rotate(60)")
+		.attr("text-anchor", "start")
+		.attr("x", 10)
+		.attr("y", 5);
+		
+// Change labels to follow resizing of bars
+d3.selectAll("#labelText")
+		// Start of transition for labels
+		// Transition settings
+		.transition()
+		.duration(2000)
+		.ease(d3.easeBackInOut.overshoot(1.7))
+		// End of label transition
+		.attr("x", (d, i) => 55 + (i*(size/dataCount)))
+		.attr("y", (d) => yScale(d.Count) - 8)
+		.attr("font-size", (d) => (size/30))
+		.attr("fill", "navy")
+		.attr("transform", function(d) {
+			return "rotate(-" + (90 -(size/9)) + "," + (xScale(d.Year) + 45) + "," + yScale(d.Count) + ")";
+			});
+}
+
+// Listen to the slider
+d3.select("#mySlider").on("change", function(d){
+	changeSize(this.value);
+});
+
+});
+};
+</script>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset = "UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Project Web Application Development 2020:  Paintings on Paper</title>
+	<!-- Load highslie.js and css --> 
+	<script type="text/javascript" src="highslide/highslide-with-gallery.js"></script>
+	<link rel="stylesheet" type="text/css" href="highslide/highslide.css" />
+	<style>
+		/*  Full page is sized as a box where padding and border are included in the width and height */
+		* {
+			box-sizing: border-box;
+		}
+		
+		/* Set height to 100% as a part of moving the footer to the bottom */
+		html {
+			height: 100%;
+		}
+		
+		/* Define preferred and "fallback" fonts. Set margin, and height to 100% as a part of moving the footer to the bottom  */
+		body {
+			font-family: Times, Helvetica, sans-serif;
+			margin: 0;
+			height: 100%;
+		}
+		
+		/* Set the padding of the header and background. Center text and set its colour  */
+		header {
+			padding: 30px;
+			text-align: center;
+			background: #1abc9c;
+			color: white;
+		}
+		
+		/* Navigation bar styling. Set overflow and  navigation background */
+		.nav {
+			overflow: hidden;
+			background-color: #00004d;
+		}
+		
+		/* Move the navigation links to the left of the bar, center the text, set its colour, padding and animation. Text-decoration is set to none so the links are not underlined. */
+		.nav a {
+			float: left;
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 20px;
+			text-decoration: none;
+			transition: transform .2s;
+		}
+		/* Move the Subscribe/Login link to the right of the navigation bar */
+		.nav a.right {
+			float: right;
+		}
+		
+		/* Zooom in on links when hovering over */
+		.nav a:hover {
+			 transform: scale(1.3);
+		}
+		
+		/* Make box flexible, wrap items on resizing the window. Set minimum height to 100% as a part of moving the footer to the bottom  */
+		.box {
+			display: flex;
+			flex-wrap: wrap;
+			padding-bottom: 100px;
+			min-height: 100%;
+		}
+		
+		/* Let the left side of the screen to take 30% of the full width, set background colour and padding, center the content. */
+		.boxleft {
+			flex: 30%;
+			background-color: #f1f1f1;
+			padding: 50px;
+			text-align: center;	
+		}
+		
+		/* Style a border for the image in the left side of the screen */
+		.boxleft img {
+			border: 9px solid;
+			border-color: white;
+			border-style: double;
+			width: 300px;
+		}
+
+		/* Let the right side of the screen to take 70% of the full width, set padding and background colour, center the text */
+		.boxright {
+			flex: 70%;
+			padding: 20px;
+			background-color: white;
+			text-align: center;
+		}
+		
+		/* Set thumbnail image height and border */
+		.image {
+			height: 120px;
+			border: 10px solid;
+			border-color: #f1f1f1;
+		}
+		
+		/* Aligning a caption in the center during the slideshow */
+		.highslide-caption {
+			width: 100%;
+			text-align: center;
+		}
+		
+		/* Display a slide number inline but separated it from caption */
+		.highslide-number {
+			display: inline;
+			padding-right: 15px;
+		}
+		
+		/* Set background colour and padding. Set height and top margin so to keep the footer at the bottom of the screen, but with a thin line for visual separation */
+		footer {
+			padding: 8px;
+			background: #ddd;
+			height: 100px;
+			margin-top: -98px;			
+		}
+		
+		/* Set text-decoration to none so the links are not underlined, define its colour and font */ 
+		#footbox {
+			display: block;
+			foat: center;
+			text-align: center;
+			font-size: 13px;
+			margin-top: 13px;
+		}		
+		
+		/* Set text-decoration to none so the links are not underlined, define its colour and font */
+		footer a {
+			text-decoration: none;
+			color: #00004d;
+			font-weight: bold;
+		}
+
+		/* Change colour of links when hovering over */	
+		footer a:hover {
+			color: #1abc9c;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Header with the artist's name --> 
+	<header>
+		<h3>OLGA ROZHDESTVINA</h3>
+	</header
+	
+	<!-- Navigation menu -->
+		<nav class="nav">
+			<!-- Links for each page --> 
+			<a href="index.html">Home</a>
+			<a href="paper.html">Paper</a>
+			<a href="canvas.html">Canvas</a>
+			<a href="panel.html">Panel</a>
+			<a href="subscribe.html" class="right">Subscribe/Login</a>
+		</nav>
+		
+	<!-- Main part -->
+	<div class="box">
+		<!-- Left side of the screen -->
+		<div class="boxleft">
+			<!-- Image in left side -->
+			<img class="img" src="signature.jpg" alt="Signature" title="Signature">
+		</div>	
+		
+		<!-- Right side of the screen -->		
+		<div class="boxright">
+			<!-- Gallery in the right side -->
+			<div class="highslide-gallery">
+			<!-- IMAGES.
+				Mark up a thumbnail by putting an a-tag around an img-tag.
+				Supply a correct class and an onclick attribute for indexing the thumbnail when expanding an image.
+				Specify alt property in case an image fails to load and for displaying an index when expanding an image.
+				-->
+
+				<a href="Paintings\Paper\Slavic Dual Faith Kupala Night in front of Orthodox church.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Slavic Dual Faith Kupala Night in front of Orthodox church.jpg" alt="Slavic Dual Faith Kupala Night in front of Orthodox church" /></a>
+
+				<a href="Paintings\Paper\Dual Faith Buddhism and Shamanism in Mongolia.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Dual Faith Buddhism and Shamanism in Mongolia.jpg" alt="Dual Faith Buddhism and Shamanism in Mongolia.jpg" /></a>
+
+				<a href="Paintings\Paper\White Old Man on the Turtle Rock. Mongolia.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\White Old Man on the Turtle Rock. Mongolia.jpg" alt="White Old Man on the Turtle Rock. Mongolia" /></a>
+
+				<a href="Paintings\Paper\Re-ordination.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Re-ordination.jpg" alt="Re-ordination.jpg" /></a>
+
+				<a href="Paintings\Paper\Forever we will be together.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Forever we will be together.jpg" alt="Forever we will be together. Two paintings" /></a>
+
+				<a href="Paintings\Paper\Pacification.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Pacification.jpg" alt="Pacification. Two paintings" /></a>
+
+				<a href="Paintings\Paper\On the way home.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\On the way home.jpg" alt="On the way home" /></a>
+				<a href="Paintings\Paper\A long way up.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\A long way up.jpg" alt="A long way up" /></a>
+
+				<a href="Paintings\Paper\Life Cycle of the Wasp.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Life Cycle of the Wasp.jpg" alt="Life Cycle of the Wasp" />
+
+				<a href="Paintings\Paper\Trough 40 light years.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Trough 40 light years.jpg" alt="Trough 40 light years" /></a>
+
+				<a href="Paintings\Paper\A Tribute To '80s.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\A Tribute To '80s.jpg" alt="A Tribute To '80s" /></a>
+
+				<a href="Paintings\Paper\On These Shoulders We Stand.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\On These Shoulders We Stand.jpg" alt="On These Shoulders We Stand" />
+	
+				<a href="Paintings\Paper\Otez.jpg" class="highslide" onclick="return hs.expand(this)">	
+					<img class="image" src="Paintings\Paper\Otez.jpg" alt="Otez (Father)" /></a>
+
+				<a href="Paintings\Paper\Sun The Fisherman.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Sun The Fisherman.jpg" alt="Sun The Fisherman" /></a>
+
+				<a href="Paintings\Paper\While Alaska is sleeping.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\While Alaska is sleeping.jpg" alt="While Alaska is sleeping" /></a>
+
+				<a href="Paintings\Paper\Ganesa.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Ganesa.jpg" alt="Ganesa" /></a>
+
+				<a href="Paintings\Paper\My mother smokes slims.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\My mother smokes slims.jpg" alt="My mother smokes slims" /></a>
+
+				<a href="Paintings\Paper\Mariam Amash.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Mariam Amash.jpg" alt="Mariam Amash" /></a>
+
+				<a href="Paintings\Paper\Bachlava.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Bachlava.jpg" alt="Bachlava" /></a>
+					
+				<a href="Paintings\Paper\Death of Coyote. Persephone's kiss\IMG_20160620_160813_1.jpg" class="highslide" onclick="return hs.expand(this)">
+				<a href="Paintings\Paper\Death of Coyote. Persephone's kiss\IMG_20160620_160723_1.jpg" class="highslide" onclick="return hs.expand(this)">
+				<a href="Paintings\Paper\Death of Coyote. Persephone's kiss\IMG_20160620_163225_1.jpg" class="highslide" onclick="return hs.expand(this)">
+				<a href="Paintings\Paper\Death of Coyote. Persephone's kiss\Death of Coyote. Persephone's kiss.png" class="highslide" onclick="return hs.expand(this)">	
+					<img class="image" src="Paintings\Paper\Death of Coyote. Persephone's kiss\Death of Coyote. Persephone's kiss.png" alt="Death of Coyote. Persephone's kiss. Three paintings" /></a></a></a></a>
+
+				<a href="Paintings\Paper\To God.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\To God.jpg" alt="To God" /></a>
+
+				<a href="Paintings\Paper\Kitsune prostitute in Soviet Russia.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Kitsune prostitute in Soviet Russia.jpg" alt="Kitsune prostitute in Soviet Russia" /></a>
+
+				<a href="Paintings\Paper\Natasha is flying on a pig.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Natasha is flying on a pig.jpg" alt="Natasha is flying on a pig" /></a>
+
+				<a href="Paintings\Paper\I thought I was a human, but I am cured.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\I thought I was a human, but I am cured.jpg" alt="I thought I was a human, but I am cured" /></a>
+
+				<a href="Paintings\Paper\The Tiger Lilles.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\The Tiger Lilles.jpg" alt="The Tiger Lilles" /></a>
+
+				<a href="Paintings\Paper\Adrian Stout.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Adrian Stout.jpg" alt="Adrian Stout" /></a>
+
+				<a href="Paintings\Paper\Injured.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Injured.jpg" alt="Injured" /></a>
+
+				<a href="Paintings\Paper\PINA BAUSCH.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\PINA BAUSCH.jpg" alt="PINA BAUSCH" /></a>
+
+				<a href="Paintings\Paper\Capheus.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Capheus.jpg" alt="Capheus" /></a>
+
+				<a href="Paintings\Paper\Mark A. Sheppard.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Mark A. Sheppard.jpg" alt="Mark A. Sheppard" /></a>
+
+				<a href="Paintings\Paper\Mark Pellegrino.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Mark Pellegrino.jpg" alt="Mark Pellegrino" />
+
+				<a href="Paintings\Paper\Valerio Tambone.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Valerio Tambone.jpg" alt="Valerio Tambone" /></a>
+
+				<a href="Paintings\Paper\Hannibal.jpg" class="highslide" onclick="return hs.expand(this)">
+					<img class="image" src="Paintings\Paper\Hannibal.jpg" alt="Hannibal"/></a>
+
+			</div>
+		</div>
+	</div>
+	<!-- Footer with links --> 	
+	<footer>
+		<div id="footbox">
+			<!-- Links to artist's work
+			First link is a current webiste, brings back to home page --> <a href="index.html">www.olgarozhdestvina.com</a><br><br> 
+			<a href="http://www.newirishart.ie/irish-artists/olga-rozhdestvina-artist">New Irish Art</a>
+		</div>
+	</footer>
+</body>
+
+<script type="text/javascript">
+// Script for expanding images
+// Adapted from http://highslide.com/ 
+hs.graphicsDir = "highslide/graphics/"; // Specify a path to a graphics folder
+hs.align = "center"; // Align an expanded image to the center
+hs.transitions = ["expand", "crossfade"]; // Add transitions 
+hs.fadeInOut = true; // Add a fading effect to the regular expand effect
+hs.dimmingOpacity = 0.75; // Add background opacity 
+hs.wrapperClassName = "borderless floating-caption"; // Present an expanded image with no border and Add a floating caption to it
+hs.captionEval = "this.thumb.alt"; // Define caption by accessing alt property of an image
+hs.marginLeft = 100; // Make space for the thumbstrip
+hs.marginBottom = 80 // Make space for the controls and the floating caption
+hs.numberPosition = "caption"; // Add a slide number to the caption section 
+hs.lang.number = "%1/%2"; // Reference to the hs.lang in highslide-with-gallery.js
+
+// Add the slideshow with the controlbar and the thumbstrip
+hs.addSlideshow({
+// Slideshow
+	interval: 5000, // Give each slide 5 seconds before changing
+	repeat: false, // When slideshow is over, exit
+	useControls: true, // Add a control panel
+	// Add settings for the controls
+	overlayOptions: {
+		className: "text-controls", // Use text controls instead of symbolic
+		position: "bottom center", // Move the control panel to the bottom of an image
+		relativeTo: "viewport" // Move it below an expanded image
+	},
+	// Add settings for thumbstrip
+	thumbstrip: {
+		position: "middle left", // Move it to the middle left of an expanded image
+		mode: "vertical", // Position it vertically
+		relativeTo: "viewport" // Move it away from an expanded image
+	}
+});
+</script>
+</html>

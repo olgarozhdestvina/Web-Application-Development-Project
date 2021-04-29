@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset = "UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Project Web Application Development 2020: Subscribe and Login</title>
+	<style>
+		/*  Full page is sized as a box where padding and border are included in the width and height */
+		* {
+			box-sizing: border-box;
+		}
+		
+		/* Set height to 100% as a part of moving the footer to the bottom */
+		html {
+			height: 100%;
+		}
+		
+		/* Define preferred and "fallback" fonts. Set margin, and height to 100% as a part of moving the footer to the bottom  */
+		body {
+			font-family: Times, Helvetica, sans-serif;
+			margin: 0;
+			height: 100%;
+		}
+		
+		/* Set the padding of the header and background. Center text and set its colour  */
+		header {
+			padding: 30px;
+			text-align: center;
+			background: #1abc9c;
+			color: white;
+		}
+		
+		/* Navigation bar styling. Set overflow and  navigation background */
+		.nav {
+			overflow: hidden;
+			background-color: #00004d;
+		}
+		
+		/* Move the navigation links to the left of the bar, center the text, set its colour, padding and animation. Text-decoration is set to none so the links are not underlined. */
+		.nav a {
+			float: left;
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 20px;
+			text-decoration: none;
+			transition: transform .2s;
+		}
+		/* Move the Subscribe/Login link to the right of the navigation bar */
+		.nav a.right {
+			float: right;
+		}
+		
+		/* Zooom in on links when hovering over */
+		.nav a:hover {
+			 transform: scale(1.3);
+		}
+		
+		/* Make box flexible, wrap items on resizing the window. Set minimum height to 100% as a part of moving the footer to the bottom  */
+		.box {
+			display: flex;
+			flex-wrap: wrap;
+			padding-bottom: 100px;
+			min-height: 100%;
+		}
+		
+		/* Let the left side of the screen to take 30% of the full width, set background colour and padding, center the content. */
+		.boxleft {
+			flex: 30%;
+			background-color: #f1f1f1;
+			padding: 50px;
+			text-align: center;	
+		}
+		
+		/* Style a border for the image in the left side of the screen */		.boxleft img {
+			border: 9px solid;
+			border-color: white;
+			border-style: double;
+			width: 300px;
+		}
+		
+		/* Let the middle section of the screen to take 30% of the full width, set the background colour and top and bottom padding */
+		.boxmiddle {   
+			flex: 30%;
+			padding: 30px;
+			background-color: white;
+		}
+		
+		/* Settings for input section to apper larger than default */
+		.input {
+			width: 380px;
+			padding: 5px;
+			margin: 6px;
+			display: inline-table;
+		}
+
+		/* Set background and text colour, padding and border for submit button, align it with other elements (to the left). */		
+		input[type=submit] {
+			background-color: #00004d;
+			color: white;
+			border: none;
+			margin-left: 6px;
+			padding: 5px;
+		}
+
+		/* Alignlign cancel button with other elements (to the left) */
+		button {
+			margin-left: 6px;	
+		}
+		
+		/* Zoom in on submit and login buttons and change text colour */
+		#submit:hover {
+			transform: scale(1.1);
+			color: #1abc9c;
+		}
+
+		/* Let the right side of the screen to take 70% of the full width, set padding and background colour */
+		.boxright {   
+			flex: 30%;
+			padding: 30px;
+			background-color: #f1f1f1;
+		}
+		
+		/* Add animation to div for login and subscribe */
+		.animDiv {
+			position: relative;
+			margin: auto;
+			width: 140px;
+			background: #1abc9c;
+			text-align: center;
+			padding: 5px;
+			color: white;
+			-webkit-animation: mymove 2s 0 linear alternate;
+			 /* Chrome, Safari, Opera */
+			animation: mymove 2s 0 ease-in alternate;
+			animation-delay: 1s;
+		}
+		/* Chrome, Safari, Opera */
+		@-webkit-keyframes mymove {
+			to {-webkit-transform: rotateY(180deg);}
+		}
+		@keyframes mymove {
+			to {transform: rotateY(180deg);}
+		}	
+		
+		/* Style instruction text under animation and move it to the right */ 
+		p {
+			position: absolute;
+			color: #5F9EA0;
+			font-size: 12px;
+			margin-left: 30px;
+		}
+				
+		/* Set background colour and padding. Set height and top margin so to keep the footer at the bottom of the screen, but with a thin line for visual separation */
+		footer {
+			padding: 8px;
+			background: #ddd;
+			height: 100px;
+			margin-top: -98px;			
+		}
+		
+		/* Center text, define its font size, display the links as a centrally floating block and move it from the top of the footer */ 
+		#footbox {
+			display: block;
+			foat: center;
+			text-align: center;
+			font-size: 13px;
+			margin-top: 13px;
+		}		
+		
+		/* Set text-decoration to none so the links are not underlined, define its colour and font */
+		footer a {
+			text-decoration: none;
+			color: #00004d;
+			font-weight: bold;
+		}
+
+		/* Change colour of links when hovering over */		
+		footer a:hover {
+			color: #1abc9c;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Header with the artist's name --> 
+	<header>
+		<h3>OLGA ROZHDESTVINA</h3>
+	</header
+	
+	<!-- Navigation menu -->
+		<nav class="nav">
+			<!-- Links for each page --> 
+			<a href="index.html">Home</a>
+			<a href="paper.html">Paper</a>
+			<a href="canvas.html">Canvas</a>
+			<a href="panel.html">Panel</a>
+			<a href="subscribe.html" class="right">Subscribe/Login</a>
+		</nav>
+		
+	<!-- Main part -->	
+	<div class="box">
+		<!-- Left side of the screen -->
+		<div class="boxleft">
+			<!-- Image in left side -->
+			<img class="img" src="my photo.jpg" alt="Olga Rozhdestvina" title="Olga Rozhdestvina">
+		</div>
+		
+		<!-- Middle of the screen for subscribing with username and email -->
+		<form class="boxmiddle" action="/action_page.php"  method="post">
+			<div class="animDiv" id="dom1" onclick="colorChange();">Subscribe Details
+			<p id="p1">click the button</p></div><br><br>
+			<label for="text">Username:</label><br>
+			<input class="input" type="text" name="username" required><br>
+			<label for="email">Email Address:</label><br>
+			<input class="input" type="email" name="email" required><br><br>
+			<label for="text">Optional</label><br>
+				<textarea class="input" name="optional" cols="60" rows="5" placeholder="if you have any queries..."></textarea><br>
+			<input id="submit" type="submit" value="Subscribe">
+		</form>
+		
+		<!-- Right side of the screen for login -->		
+		<form class="boxright" action="" method="post" onsubmit="return validation();">
+			<div class="animDiv" id="dom2" onclick="colorChange2();">Login Details
+			<p id="p2">click the button</p></div><br><br><br>
+			<label for="text">Username:</label><br>
+			<input class="input" id="username" type="text" name="username" required><br>
+			<label for="password">Password:</label><br>
+			<input class="input" id="password" type="password" name="password" required><br><br>
+			<input type="checkbox" checked="checked" name="remember"> Remember me<br><br>
+			<button type="button" onclick="cancel();">Cancel</button>
+			<span>Forgot <a href="restorePassword.html">password?</a></span><br><br>
+			<input id="submit" type="submit" value="Login">
+		</form>
+	</div>
+	<!-- Footer with links --> 	
+	<footer>
+		<div id="footbox">
+			<!-- Links to artist's work
+			First link is a current webiste, brings back to home page --> <a href="index.html">www.olgarozhdestvina.com</a><br><br> 
+			<a href="http://www.newirishart.ie/irish-artists/olga-rozhdestvina-artist">New Irish Art</a>
+		</div>
+	</footer>
+</body>
+<script>
+// Change style of Subscribe and Login buttons and add animation to them on click 
+function colorChange(){
+	document.getElementById("dom1").style.color = "#7FFFD4";
+	document.getElementById("dom1").style.backgroundColor = "navy";
+	document.getElementById("dom1").style.animationIterationCount = "infinite";
+	document.getElementById("dom1").style.boxShadow = "5px 10px 20px #1abc9c";
+	document.getElementById("p1").innerHTML = ""; // Erase instruction text
+}
+
+function colorChange2(){
+	document.getElementById("dom2").style.color = "#7FFFD4";
+	document.getElementById("dom2").style.backgroundColor = "navy";
+	document.getElementById("dom2").style.animationIterationCount = "infinite";
+	document.getElementById("dom2").style.boxShadow = "5px 10px 20px #1abc9c";
+	document.getElementById("p2").innerHTML = "";
+}
+
+// LOGIN VALIDATION
+var attempt = 3; // User has three attempts to login
+
+function validation() {
+// Get the values of username and password
+var username = document.getElementById("username").value;
+var password = document.getElementById("password").value;
+// For a demo version username is Olga and password is password
+if (username == "Olga" && password == "password"){
+	// If the username and password are correct, pop up an alert
+	alert("Welcome back!");
+	// Erase the values inside the input window
+	document.getElementById("username").value="";
+	document.getElementById("password").value="";
+	}
+// If the username and/or password are not correct
+else {
+	// If no attempts left
+	if (attempt == 0) {
+		// Pop up an alert
+		alert("You have no login attempts left. Please try again later");
+		// Disable the login
+		document.getElementById("username").disabled=true;
+		document.getElementById("password").disabled=true;
+		document.getElementByClassName(".boxright").disabled=true;
+		}
+	else {
+		// Decrement login attempts by one
+		attempt--; 
+		// Pop up an alert on how many attempts left
+		alert("Incorrect username or password. You have only " +attempt+ " attempts left");
+		}
+	}
+	// No submit, return to if clause
+	return false;
+}
+
+// FUNCTION FOR CANCELLING TYPED IN LOGIN DETAILS
+function cancel() {
+	// Get the values of username and password
+	var username = document.getElementById("username").value;
+	var password = document.getElementById("password").value;
+	// Erase the values inside the input window
+	document.getElementById("username").value="";
+	document.getElementById("password").value="";
+}
+</script>
+</html>
